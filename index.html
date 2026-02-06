@@ -10,84 +10,117 @@
 <div class="container mt-5">
   <div class="card p-4 shadow-lg">
     <h3 class="text-center">2025 Council Election Nomination Portal</h3>
+
     <div class="progress my-4">
-      <div class="progress-bar" id="progressBar" style="width: 16%"></div>
+      <div class="progress-bar" id="progressBar"></div>
     </div>
+
+    <div id="errorBox" class="alert alert-danger d-none"></div>
 
     <form id="nominationForm">
 
-<!-- STEP 1 -->
-<div class="step active">
-<h4>Personal Details</h4>
-<input type="file" class="form-control mb-2" required>
-<input type="text" class="form-control mb-2" placeholder="Full Name">
-<input type="text" class="form-control mb-2" placeholder="Membership No">
-<input type="text" class="form-control mb-2" placeholder="Membership Status">
-<input type="tel" class="form-control mb-2" placeholder="Phone Number">
-<textarea class="form-control mb-2" placeholder="Contact Address"></textarea>
-</div>
+      <!-- STEP 1 -->
+      <div class="step active">
+        <h4>Personal Details</h4>
 
-<!-- STEP 2 -->
-<div class="step">
-<h4>Academic & Professional</h4>
-<textarea class="form-control mb-2" rows="4" placeholder="Qualifications"></textarea>
-<textarea class="form-control mb-2" rows="4" placeholder="Service to Institute"></textarea>
-<textarea class="form-control mb-2" rows="4" placeholder="Service to Other Bodies"></textarea>
-<textarea class="form-control mb-2" rows="4" placeholder="Membership of Social Organizations"></textarea>
-<textarea class="form-control mb-2" rows="4" placeholder="Special Feats / Awards"></textarea>
-<textarea class="form-control mb-2" rows="2" placeholder="Hobbies"></textarea>
-<textarea class="form-control mb-2" rows="4" maxlength="200" placeholder="Other Relevant Info"></textarea>
-</div>
+        <label for="fullname">Full Name</label>
+        <input id="fullname" type="text" class="form-control mb-2" name="fullname" required>
 
-<!-- STEP 3 -->
-<div class="step">
-<h4>Sponsors</h4>
-<input class="form-control mb-2" placeholder="Sponsor 1 Name">
-<input class="form-control mb-2" placeholder="Sponsor 1 Membership No">
-<input type="file" class="form-control mb-2">
-<input class="form-control mb-2" placeholder="Sponsor 2 Name">
-<input class="form-control mb-2" placeholder="Sponsor 2 Membership No">
-<input type="file" class="form-control mb-2">
-</div>
+        <label for="membership">Membership Number</label>
+        <input id="membership" type="text" class="form-control mb-2" name="membership" required>
 
-<!-- STEP 4 -->
-<div class="step">
-<h4>District Society</h4>
-<input class="form-control mb-2" placeholder="Chairman Name">
-<input class="form-control mb-2" placeholder="Chairman Membership No">
-<select class="form-select mb-2">
-<option>Select District</option>
-<option>Lagos</option>
-<option>Abuja</option>
-<option>Ibadan</option>
-</select>
-<input type="file" class="form-control">
-</div>
+        <label for="status">Membership Status</label>
+        <input id="status" type="text" class="form-control mb-2" name="status" required>
 
-<!-- STEP 5 -->
-<div class="step">
-<h4>Tax Clearance</h4>
-<input type="file" class="form-control">
-</div>
+        <label for="phone">Phone Number</label>
+        <input id="phone" type="tel" class="form-control mb-2" name="phone" required>
 
-<!-- STEP 6 -->
-<div class="step">
-<h4>Review & Submit</h4>
-<p>Please confirm all details before submission.</p>
-</div>
+        <label for="address">Contact Address</label>
+        <textarea id="address" class="form-control mb-2" name="address" required></textarea>
+      </div>
 
-<div class="d-flex justify-content-between mt-4">
-<button type="button" class="btn btn-secondary" onclick="prevStep()">Back</button>
-<button type="button" class="btn btn-primary" onclick="nextStep()">Next</button>
-</div>
+      <!-- STEP 2 -->
+      <div class="step">
+        <h4>Academic & Professional</h4>
 
-</form>
+        <label for="qualifications">Qualifications</label>
+        <textarea id="qualifications" class="form-control mb-2" name="qualifications" required></textarea>
 
-<div id="success" class="alert alert-success mt-3 d-none">
-Submission Successful!
-</div>
+        <label for="serviceInstitute">Service to Institute</label>
+        <textarea id="serviceInstitute" class="form-control mb-2" name="serviceInstitute" required></textarea>
 
-</div>
+        <label for="serviceOther">Service to Other Bodies</label>
+        <textarea id="serviceOther" class="form-control mb-2" name="serviceOther" required></textarea>
+
+        <label for="awards">Awards</label>
+        <textarea id="awards" class="form-control mb-2" name="awards" required></textarea>
+
+        <label for="hobbies">Hobbies</label>
+        <textarea id="hobbies" class="form-control mb-2" name="hobbies" required></textarea>
+
+        <label for="otherInfo">Other Relevant Information (max 200 words)</label>
+        <textarea id="otherInfo" class="form-control mb-2" name="otherInfo" required maxlength="200"></textarea>
+      </div>
+
+      <!-- STEP 3 -->
+      <div class="step">
+        <h4>Sponsors</h4>
+
+        <label for="sponsor1">Sponsor 1 Name</label>
+        <input id="sponsor1" class="form-control mb-2" name="sponsor1" required>
+
+        <label for="sponsor1no">Sponsor 1 Membership Number</label>
+        <input id="sponsor1no" class="form-control mb-2" name="sponsor1no" required>
+
+        <label for="sponsor2">Sponsor 2 Name</label>
+        <input id="sponsor2" class="form-control mb-2" name="sponsor2" required>
+
+        <label for="sponsor2no">Sponsor 2 Membership Number</label>
+        <input id="sponsor2no" class="form-control mb-2" name="sponsor2no" required>
+      </div>
+
+      <!-- STEP 4 -->
+      <div class="step">
+        <h4>District Society</h4>
+
+        <label for="chairman">District Chairman Name</label>
+        <input id="chairman" class="form-control mb-2" name="chairman" required>
+
+        <label for="district">District Society</label>
+        <select id="district" class="form-select mb-2" name="district" required>
+          <option value="">Select District</option>
+          <option>Lagos</option>
+          <option>Abuja</option>
+          <option>Ibadan</option>
+        </select>
+      </div>
+
+      <!-- STEP 5 -->
+      <div class="step">
+        <h4>Tax Clearance</h4>
+
+        <label for="taxfile">Tax Document Reference</label>
+        <input id="taxfile" class="form-control mb-2" name="taxfile" required>
+      </div>
+
+      <!-- STEP 6 -->
+      <div class="step">
+        <h4>Review & Submit</h4>
+        <p>Please confirm all details before submission.</p>
+      </div>
+
+      <div class="d-flex justify-content-between mt-4">
+        <button type="button" class="btn btn-secondary" onclick="prevStep()">Back</button>
+        <button type="button" class="btn btn-primary" onclick="nextStep()">Next</button>
+      </div>
+
+    </form>
+
+    <div id="success" class="alert alert-success mt-3 d-none">
+      Submission Successful!
+    </div>
+
+  </div>
 </div>
 
 <script src="js/app.js"></script>
